@@ -1,66 +1,49 @@
-# Qlik_Project
-Project Name
-Project Name is a Python-based data scraping tool that extracts data from a website and stores it in a MySQL database. It uses the Airflow platform to schedule and execute the scraping tasks. This documentation provides a step-by-step guide on how to install and configure the project.
+# Project Name "Website Scraping and MySQL Database Dumping Project"
+## Project Overview
+This project involves scraping data from a website and storing it in a MySQL database using Python, Selenium, Beautiful Soup, and Airflow. The project is built on an Ubuntu server running on Windows.
 
-# Installation
-Clone the project from GitHub:
+## Purpose
+The purpose of this project is to automate the process of scraping data from a website and storing it in a database. By automating this process, we can save time and improve accuracy by eliminating the need for manual data entry.
 
-git clone https://github.com/<username>/<project-name>.git
-Navigate to the project directory:
+## Technologies Used
+The following technologies were used in this project:
 
-cd <project-name>
-Install the required packages:
+Python
+Selenium
+Beautiful Soup
+MySQL
+Airflow
+How It Works
+The project begins by scraping the website using Selenium and Beautiful Soup. The scraped data is then stored in a MySQL database using the mysql.connector package. Airflow is used to automate the entire process, including scheduling and monitoring the scraping and dumping of data.
 
-pip install -r requirements.txt
-Configuration
-Create a MySQL database and a user with remote access. Note down the database name, host, port, username, and password.
+To ensure the security of the project, a new user is created with appropriate privileges for remote access to the MySQL database. Additionally, the necessary packages are installed to enable Airflow to write to MySQL.
 
-Install the MySQL package for Airflow:
+## Getting Started
+To get started with this project, follow these steps:
 
-pip install apache-airflow[mysql]
-Edit the config.py file and enter the database details:
+Install Python and MySQL.
 
-DB_CONFIG = {
-    'database': '<database-name>',
-    'host': '<host>',
-    'port': <port>,
-    'user': '<username>',
-    'password': '<password>'
-}
-In the Airflow web UI, go to the Admin section and click on "Connections".
+## Clone the project from the GitHub repository.
+### Create a user in MySQL 
+"CREATE USER 'newuser'@'%' IDENTIFIED BY 'password';"
+"GRANT ALL PRIVILEGES ON *.* TO 'newuser'@'%';"
+Note: Replace newuser and password with the desired username and password.
 
-Click on the "Create" button and enter the following details:
+Start Airflow and run the DAG to begin scraping and dumping data.
+to make connection with  MySQL you have to add connection in airflow, from connection tab
+when you were adding connection of MySQL you will not find MySQL in connection type to add it there run following commands and contribute in the documentation by correcting the step
+### command 1:
+"sudo apt-get update"
+"sudo apt-get install mysql-server"
 
-Conn Id: mysql_default
-Conn Type: MySQL
-Host: <host>
-Port: <port>
-Schema: <database-name>
-Login: <username>
-Password: <password>
-Click on the "Save" button to create the connection.
+### command 2:
+"pip install mysqlclient"
 
-Usage
-Start the Airflow scheduler:
+### command 3:
+"pip install mysql-connector-python"
 
-airflow scheduler
-Start the Airflow webserver:
+# Usage
+To use this project, simply run the DAG in Airflow. The DAG will scrape the website and dump the data into the MySQL database automatically, based on the schedule you set in Airflow.
 
-airflow webserver
-Open the Airflow web UI in your browser (http://localhost:8080) and navigate to the "DAGs" section.
-
-Turn on the "project_name" DAG and trigger a run by clicking on the "Trigger DAG" button.
-
-Monitor the progress of the scraping task in the Airflow web UI.
-
-# Unique Steps
-To install the MySQL package for Airflow, run the following command:
-
-pip install apache-airflow[mysql]
-This package includes the necessary dependencies to connect to a MySQL database from Airflow.
-
-## To create a user with remote access to the MySQL database, run the following SQL command:
-
-CREATE USER '<username>'@'%' IDENTIFIED BY '<password>';
-GRANT ALL PRIVILEGES ON <database-name>.* TO '<username>'@'%';
-This command creates a new user with a password and grants all privileges on the specified database to that user. The % symbol allows the user to connect from any host.
+# Conclusion
+This project is an efficient and automated way to scrape data from a website and store it in a MySQL database. By automating the process, the project saves time and eliminates the need for manual data entry. The security measures taken ensure the safety and integrity of the scraped data.
